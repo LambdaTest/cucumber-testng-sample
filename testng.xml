@@ -2,16 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="BDD Test Suite" verbose="1" parallel="tests"
 	thread-count="3" >
-    <test name="WIN10TEST" annotations="JDK"
+    <test name="FIREFOX" annotations="JDK"
 		preserve-order="true">
         <parameter name="browser" value="Firefox"/>
         <parameter name="version" value="latest"/>
-        <parameter name="platform" value="Windows"/>
+        <parameter name="platform" value="Windows 10"/>
         <classes>
             <class name="MyRunner.TestRunner" />
         </classes>
     </test> <!-- Test -->
-    <test name="WIN8TEST" annotations="JDK"
+    <test name="CHROME" annotations="JDK"
 		preserve-order="true">
         <parameter name="browser" value="chrome"/>
         <parameter name="version" value="latest"/>
@@ -20,7 +20,7 @@
             <class name="MyRunner.TestRunner" />
         </classes>
     </test> <!-- Test -->
-    <test name="MACTEST" annotations="JDK"
+    <test name="EDGE" annotations="JDK"
 		preserve-order="true">
         <parameter name="browser" value="Microsoft Edge"/>
         <parameter name="version" value="latest"/>
