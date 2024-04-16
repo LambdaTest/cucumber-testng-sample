@@ -24,6 +24,13 @@
 			<version>7.6.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
+		
+
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
