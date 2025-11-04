@@ -5,6 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.TestNGCucumberRunner;
 import manager.Driver;
 import manager.DriverManager;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -28,32 +29,36 @@ public final class TestRunner extends AbstractTestNGCucumberTests {
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({ "browser", "version", "platform" })
-	public void setUpClass(String browser, String version, String platform) throws Exception {
+    public void setUpClass(String browser, String version, String platform) throws Exception {
 
-		RemoteWebDriver remoteWebdriver = null;
+        String username = System.getenv("LT_USERNAME") == null ? "YOUR_LT_USERNAME" : System.getenv("LT_USERNAME");
+        String accesskey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR_LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY");
 
-		String username = System.getenv("LT_USERNAME") == null ? "YOUR LT_USERNAME" : System.getenv("LT_USERNAME");
-		String accesskey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY");
+        MutableCapabilities ltOptions = new MutableCapabilities();
+        ltOptions.setCapability("build", "Cucumber Sample Build");
+        ltOptions.setCapability("project", "Cucumber TestNG Selenium Sample");
+        ltOptions.setCapability("selenium_version", "latest");
+//        ltOptions.setCapability("console", true);
+//        ltOptions.setCapability("network", true);
+//        ltOptions.setCapability("visual", true);
+//        ltOptions.setCapability("video", true);
 
-		DesiredCapabilities capability = new DesiredCapabilities();
-		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
-		capability.setCapability(CapabilityType.VERSION, version);
-		capability.setCapability(CapabilityType.PLATFORM, platform);
+        MutableCapabilities capabilities = new MutableCapabilities();
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION, version);
+        capabilities.setCapability("platformName", platform);
+        capabilities.setCapability("LT:Options", ltOptions);
 
-		capability.setCapability("build", "Cucumber Sample Build");
+        String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
 
-		// capability.setCapability("network", true);
-		// capability.setCapability("video", true);
-		// capability.setCapability("console", true);
-		// capability.setCapability("visual", true);
+        System.out.println("Connecting to: " + gridURL);
+        System.out.println("Capabilities: " + capabilities);
 
-		String gridURL = "https://" + username + ":" + accesskey + "@hub.lambdatest.com/wd/hub";
-		System.out.println(gridURL);
-		remoteWebdriver = new RemoteWebDriver(new URL(gridURL), capability);
-		System.out.println(capability);
-		Driver.initDriver(remoteWebdriver);
-		System.out.println(DriverManager.getDriver().getSessionId());
-	}
+        RemoteWebDriver driver = new RemoteWebDriver(new URL(gridURL), capabilities);
+
+        Driver.initDriver(driver);
+        System.out.println("Session ID: " + DriverManager.getDriver().getSessionId());
+    }
 
 	@DataProvider
 	public Object[][] features() {
