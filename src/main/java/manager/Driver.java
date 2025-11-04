@@ -2,6 +2,7 @@ package manager;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +19,7 @@ public final class Driver {
         throw new Exception("Please check the capabilities of browser");
       }
       DriverManager.getDriver().manage().window().maximize();
-      DriverManager.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
   }
 
