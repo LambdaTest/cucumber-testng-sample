@@ -1,4 +1,4 @@
-# Run Selenium Tests With Cucumber — TestMu AI (Formerly LambdaTest)
+# Run Selenium Tests With Cucumber — TestMu AI (Formerly LambdaTest)
 
 ![image](https://user-images.githubusercontent.com/70570645/171435902-8e87c640-dc42-4d01-a322-f39ffe1867d1.png)
 
