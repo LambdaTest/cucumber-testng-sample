@@ -1,229 +1,112 @@
-# Run Selenium Tests With Cucumber — TestMu AI (Formerly LambdaTest)
-
-![image](https://user-images.githubusercontent.com/70570645/171435902-8e87c640-dc42-4d01-a322-f39ffe1867d1.png)
+# Run Cucumber TestNG Selenium Tests on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
-  <a href="https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample" target="_bank">Blog</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample" target="_bank">Docs</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample" target="_bank">Learning Hub</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample" target="_bank">Newsletter</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.testmuai.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample" target="_bank">Certifications</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.youtube.com/@TestMuAI" target="_bank">YouTube</a>
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://mvnrepository.com/artifact/io.cucumber/cucumber-java"><img src="https://img.shields.io/maven-central/v/io.cucumber/cucumber-java.svg?style=for-the-badge&labelColor=000000" alt="Cucumber Java version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
-&emsp;
-&emsp;
-&emsp;
 
-*Learn how to use Cucumber framework to configure and run your Java automation testing scripts on the TestMu AI platform.*
+## Getting Started
 
-[<img height="58" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
+With TestMu AI (Formerly LambdaTest), you can run Java Cucumber with TestNG Selenium tests on a scalable cloud browser grid. This sample shows how to configure Cucumber-TestNG to run on the TestMu AI cloud.
 
-## Table Of Contents
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-* [Pre-requisites](#pre-requisites)
-* [Run Your First Test](#run-your-first-test)
-* [Local Testing With Cucumber](#testing-locally-hosted-or-privately-hosted-projects)
+### Prerequisites
 
+- JDK 8 or higher (JDK 11 recommended)
+- Maven
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-## Pre-requisites
+### Setup
 
-Before you can start performing Selenium automation testing with Cucumber, you would need to:
-
-- Install the latest **Java development environment** i.e. **JDK 8** or higher. We recommend using the **<jdk11** version.
-
-- Download the latest **Selenium Client** and its **WebDriver bindings** from the [official website](https://www.selenium.dev/downloads/). Latest versions of Selenium Client and WebDriver are ideal for running your automation script on TestMu AI Selenium cloud grid.
-
-- Install **Maven**. It can be downloaded and installed following the steps from [the official website](https://maven.apache.org/). Maven can also be installed easily on **Linux/MacOS** using [Homebrew](https://brew.sh/) package manager.
-
-### Cloning Repo And Installing Dependencies
-
-**Step 1:** Clone the TestMu AI’s Cucumber-TestNG-Sample repository and navigate to the code directory as shown below:
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/cucumber-testng-sample
-cd cucumber-testng-sample
+git clone https://github.com/LambdaTest/cucumber-testng-sample && cd cucumber-testng-sample
+mvn clean install -DskipTests
 ```
 
-You may also want to run the command below to check for outdated dependencies.
+Set your credentials as environment variables.
+
+**macOS / Linux:**
 
 ```bash
-mvn versions:display-dependency-updates
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-### Setting Up Your Authentication
-
-Make sure you have your TestMu AI credentials with you to run test automation scripts. You can obtain these credentials from the [TestMu AI Automation Dashboard](https://automation.lambdatest.com/build?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample) or by your [TestMu AI Profile](https://accounts.lambdatest.com/login?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample).
-
-**Step 2:** Set TestMu AI **Username** and **Access Key** in environment variables.
-
-* For **Linux/macOS**:
-  
-  ```bash
-  export LT_USERNAME="YOUR_USERNAME" 
-  export LT_ACCESS_KEY="YOUR ACCESS KEY"
-  ```
-* For **Windows**:
-  ```bash
-  set LT_USERNAME="YOUR_USERNAME" 
-  set LT_ACCESS_KEY="YOUR ACCESS KEY"
-  ```
-
-
-## Run Your First Test
-
->**Test Scenario**: Here is the sample feature file for Cucumber that shows a scenario to test a sample to-do list app by marking couple items as done, adding a new item to the list and finally displaying the count of pending items as output.
-
+**Windows:**
 
 ```bash
-Feature: Add new item to ToDO list
-
-Scenario: TestMu AI ToDO Scenario
-
-Given user is on home Page
-When select First Item
-Then select second item
-Then add new item
-Then verify added item
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-Check out the [TestRunner.java](https://github.com/LambdaTest/cucumber-testng-sample/blob/master/src/main/java/MyRunner/TestRunner.java) file to automate our feature file through Selenium using Cucumber-TestNG.
-
-### Configuring Your Test Capabilities
-
-**Step 3:** In the test script, you need to update your test capabilities. In this code, we are passing browser, browser version, and operating system information, along with TestMu AI Selenium grid capabilities via capabilities object. The capabilities object in the above code are defined as:
-
-```java
-DesiredCapabilities capability = new DesiredCapabilities();
-            capability.setCapability(CapabilityType.BROWSER_NAME, browser);
-            capability.setCapability(CapabilityType.VERSION,version);
-            capability.setCapability(CapabilityType.PLATFORM, platform);
-            capability.setCapability("build", "Your Build Name");
-```
-
-You can generate capabilities for your test requirements with the help of [Desired Capability Generator](https://www.testmuai.com/capabilities-generator/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample).
-
-### Executing The Test
-
-**Step 4:** The tests can be executed in the terminal using the following command:
+### Run tests
 
 ```bash
 mvn test
 ```
 
-Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on TestMu AI Automation Dashboard. TestMu AI Automation Dashboard will help you view all your text logs, screenshots and video recording for your entire automation tests.
+View results on your TestMu AI dashboard.
 
+### Local testing with TestMu AI Tunnel
 
-## Testing Locally Hosted Or Privately Hosted Projects
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-You can test your locally hosted or privately hosted projects with TestMu AI Selenium grid using TestMu AI Tunnel. All you would have to do is set up an SSH tunnel using tunnel and pass toggle `tunnel = True` via desired capabilities. TestMu AI Tunnel establishes a secure SSH protocol based tunnel that allows you in testing your locally hosted or privately hosted pages, even before they are live.
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-Refer our [TestMu AI Tunnel documentation](https://www.testmuai.com/support/docs/testing-locally-hosted-pages/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample) for more information.
+Add the following to your capabilities:
 
-Here’s how you can establish TestMu AI Tunnel.
-
-Download the binary file of:
-* [TestMu AI Tunnel for Windows](https://downloads.lambdatest.com/tunnel/v3/windows/64bit/LT_Windows.zip)
-* [TestMu AI Tunnel for macOS](https://downloads.lambdatest.com/tunnel/v3/mac/64bit/LT_Mac.zip)
-* [TestMu AI Tunnel for Linux](https://downloads.lambdatest.com/tunnel/v3/linux/64bit/LT_Linux.zip)
-
-
-Open command prompt and navigate to the binary folder.
-
-Run the following command:
-
-```bash
-LT -user {user’s login email} -key {user’s access key}
-```
-So if your user name is lambdatest@example.com and key is 123456, the command would be:
-
-```bash
-LT -user lambdatest@example.com -key 123456
-```
-Once you are able to connect **TestMu AI Tunnel** successfully, you would just have to pass on tunnel capabilities in the code shown below :
-
-**Tunnel Capability**
-
-```java
-DesiredCapabilities capabilities = new DesiredCapabilities();        
-        capabilities.setCapability("tunnel", true);
+```js
+tunnel: true,
 ```
 
+## Contributions
 
-## Additional Links
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Maven version.
 
-- [Advanced Configuration for Capabilities](https://www.testmuai.com/support/docs/selenium-automation-capabilities/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-- [How To Test Locally Hosted Apps](https://www.testmuai.com/support/docs/testing-locally-hosted-pages/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-- [How To Integrate TestMu AI With CI/CD](https://www.testmuai.com/support/docs/integrations-with-ci-cd-tools/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
+## TestMu AI (Formerly LambdaTest) Community
 
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
 
-## Tutorials 📙
+## TestMu AI (Formerly LambdaTest) Certifications
 
-Check out our latest tutorials on JUnit automation testing 👇
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-* [Configure Cucumber Setup In Eclipse And IntelliJ [Tutorial]](https://www.testmuai.com/blog/configure-cucumber-setup-in-eclipse-and-intellij/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [How To Use Annotations In Cucumber Framework [Tutorial]](https://www.testmuai.com/blog/cucumber-annotations-hooks-tutorial/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [Automation Testing With Selenium, Cucumber & TestNG](https://www.testmuai.com/blog/automation-testing-with-selenium-cucumber-testng/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [How To Integrate Cucumber With Jenkins?](https://www.testmuai.com/blog/cucumber-with-jenkins-integration/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [Top 5 Cucumber Best Practices For Selenium Automation](https://www.testmuai.com/blog/cucumber-best-practices/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
 
-## Documentation & Resources :books:
+## LambdaTest is Now TestMu AI
 
-      
-Visit the following links to learn more about TestMu AI's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-* [TestMu AI Documentation](https://www.testmuai.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [TestMu AI Blog](https://www.testmuai.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
-* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)    
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
 
-## TestMu AI Community :busts_in_silhouette:
+### How LambdaTest Evolved into TestMu AI
 
-The [TestMu AI Community](https://community.testmuai.com/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-## What's New At TestMu AI ❓
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm.
 
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.testmuai.com/) 
-      
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
-## 🚀 LambdaTest is Now TestMu AI
+## Support
 
-👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/) - we have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
-
-Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
-
-### 🔄 Our Rebrand Journey
-
-In 2017, we introduced LambdaTest with a clear mission: to become the world's most trusted cloud testing platform. We built a scalable, high-performance test cloud that eliminated flakiness, improved developer feedback cycles, and accelerated release velocity for teams worldwide.
-
-As LambdaTest grew, we expanded the platform into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the entire testing lifecycle. These capabilities enabled teams to test any stack, on any technology, at enterprise scale.
-
-Over time, we rebuilt the architecture to be AI-native from the ground up. What began as LambdaTest's high-performance testing cloud has now evolved into TestMu AI, an AI-native, multi-agent platform redefining modern quality engineering.
-
-We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
-
-👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
-
-### 🔭 Explore TestMu AI
-
-The same infrastructure LambdaTest customers relied on, now delivered through autonomous AI agents.
-
-- [KaneAI](https://www.testmuai.com/kane-ai/)
-- [Agent-to-Agent Testing](https://www.testmuai.com/agent-to-agent-testing/)
-- [HyperExecute](https://www.testmuai.com/hyperexecute/)
-- [Real Device Cloud](https://www.testmuai.com/real-device-cloud/)
-- [Pricing](https://www.testmuai.com/pricing/)
-- [Documentation](https://www.testmuai.com/support/docs/)
-
-## We are here to help you :headphones:
-
-* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@testmuai.com)
-* For more info, visit - [TestMu AI](https://www.testmuai.com/?utm_source=github&utm_medium=repo&utm_campaign=cucumber-testng-sample)
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
