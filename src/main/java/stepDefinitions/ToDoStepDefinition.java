@@ -16,7 +16,7 @@ public class ToDoStepDefinition {
 	@Given("^user is on home Page$")
 	public void user_already_on_home_page() throws InterruptedException {
 		System.out.println(driver.getCapabilities());
-		DriverManager.getDriver().get("https://lambdatest.github.io/sample-todo-app/");
+		DriverManager.getDriver().get("https://www.testmuai.com/selenium-playground/todo-app/");
 	}
 
 	@When("^select First Item$")
