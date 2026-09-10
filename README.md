@@ -13,7 +13,7 @@
 With TestMu AI (Formerly LambdaTest), you can run Java Cucumber with TestNG Selenium tests on a scalable cloud browser grid. This sample shows how to configure Cucumber-TestNG to run on the TestMu AI cloud.
 
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
-- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/running-cucumber-scripts-with-testng-and-selenium/) for the full setup walkthrough.
 
 ### Prerequisites
 
